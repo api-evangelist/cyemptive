@@ -1,0 +1,16 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cyemptive.com/
+plan_count: 0
+note: >-
+  Cyemptive publishes no pricing page, no plan tiers and no self-serve sign-up. The
+  company sells Cyemptive ZeroStrike, ZeroStrike Cloud Command, ZeroStrike Blueprint,
+  Compliancy Cloud and its cyber-insurance offering entirely through a direct and
+  partner sales motion — the public site routes buyers to a contact/sales form
+  (info@cyemptive.com, sales@cyemptive.com) and to a partner portal login. No quota,
+  overage or limit is published anywhere a machine can read. Recorded as an honest zero
+  rather than omitted. Note that the marketing origin (216.210.93.20) refused every
+  connection on tcp/443 during this pass, so the pricing search was completed against
+  the search index of the site rather than a live fetch; no pricing page appears in that
+  index either.
+plans: []

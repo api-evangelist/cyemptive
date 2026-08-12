@@ -1,0 +1,140 @@
+generated: '2026-08-11'
+method: probed
+source: live GET of /.well-known/* on every Cyemptive host that resolves
+note: >-
+  Every probed path missed. No document was returned on any host, so this file records
+  an absence and NO WellKnown / SecurityTxt pointer is wired into apis.yml — the pointer
+  would assert that Cyemptive serves a discovery surface, which it does not.
+  www.cyemptive.com is included for the record only: the origin (216.210.93.20) refused
+  or dropped every connection on tcp/443 and tcp/80 from two independent networks on
+  2026-08-11, so its probes are recorded as status 000 (no response), not as 404s.
+hosts:
+- host: https://www.cyemptive.com
+  reachable: false
+  transport_error: connection refused / network unreachable on tcp/443 (216.210.93.20)
+  documents:
+  - path: /.well-known/security.txt
+    status: 000
+  - path: /.well-known/openid-configuration
+    status: 000
+  - path: /.well-known/oauth-authorization-server
+    status: 000
+  - path: /.well-known/oauth-protected-resource
+    status: 000
+  - path: /.well-known/api-catalog
+    status: 000
+  - path: /.well-known/ai-plugin.json
+    status: 000
+  - path: /.well-known/agent-card.json
+    status: 000
+  - path: /.well-known/agent.json
+    status: 000
+- host: https://partner.cyemptive.com
+  reachable: true
+  note: >-
+    ASP.NET partner portal; the site root 200s only after redirecting to
+    /Auth.aspx?refererurl=%2fDefault.aspx. robots.txt (200) is "User-agent: * Disallow: /".
+    Every /.well-known/* path returns a real 404 (an ASP.NET XML error document, not an
+    SPA shell).
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://docs.cyemptive.com
+  reachable: true
+  note: >-
+    A hosted Hudu IT-documentation tenant ("Sign in to your account - Cyemptive
+    Technologies, Inc."), not a developer portal. nginx returns 403 for the whole
+    /.well-known/ tree; application 404s are served for other paths.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+spec_discovery:
+  note: >-
+    STEP 0b contract discovery. api.cyemptive.com and developer.cyemptive.com do not
+    exist in DNS at all. dev.cyemptive.com resolves (24.143.87.95) but tcp/443 times out.
+    No candidate returned anything that parses as OpenAPI/Swagger.
+  probes:
+  - url: https://partner.cyemptive.com/openapi.json
+    status: 404
+  - url: https://partner.cyemptive.com/openapi.yaml
+    status: 404
+  - url: https://partner.cyemptive.com/swagger.json
+    status: 404
+  - url: https://partner.cyemptive.com/v1/openapi.json
+    status: 404
+  - url: https://partner.cyemptive.com/api-docs
+    status: 404
+  - url: https://partner.cyemptive.com/llms.txt
+    status: 404
+  - url: https://docs.cyemptive.com/openapi.json
+    status: 404
+  - url: https://docs.cyemptive.com/swagger.json
+    status: 404
+  - url: https://docs.cyemptive.com/llms.txt
+    status: 404
+  - url: https://docs.cyemptive.com/api-docs
+    status: 302
+    note: redirects into the Hudu sign-in flow, not to a spec
+  - url: https://www.cyemptive.com/openapi.json
+    status: 000
+  - url: https://dev.cyemptive.com/
+    status: 000
+    note: DNS resolves to 24.143.87.95; tcp/443 timed out
+a2a:
+  result: no-hit
+  note: >-
+    /.well-known/agent-card.json and /.well-known/agent.json missed on every host
+    (404, 403, or no response). Per the pipeline contract nothing was written to a2a/ —
+    an agent card is search-only and is never authored on a provider's behalf.
+registries:
+  note: First-party client library search across every public registry. All zero.
+  probes:
+  - url: https://api.github.com/orgs/cyemptive
+    status: 404
+  - url: https://api.github.com/search/repositories?q=cyemptive
+    status: 200
+    result: total_count 0
+  - url: https://registry.npmjs.org/-/v1/search?text=cyemptive
+    status: 200
+    result: 0 packages
+  - url: https://pypi.org/pypi/cyemptive/json
+    status: 404
+  - url: https://rubygems.org/api/v1/gems/cyemptive.json
+    status: 404
+  - url: https://crates.io/api/v1/crates?q=cyemptive
+    status: 200
+    result: 0 crates
+  - url: https://azuresearch-usnc.nuget.org/query?q=cyemptive
+    status: 200
+    result: 0 packages
+  - url: https://packagist.org/search.json?q=cyemptive
+    status: 200
+    result: 0 packages

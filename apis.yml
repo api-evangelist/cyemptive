@@ -1,7 +1,14 @@
 aid: cyemptive
 name: Cyemptive
-description: 'Cyemptive is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Cyemptive Technologies is a cybersecurity vendor founded in 2014 by Rob
+  Pike, headquartered in Washington State with additional offices in North Carolina,
+  the United Kingdom, France and India. It sells preemptive, detection-independent
+  security to enterprise and government buyers under the Cyemptive ZeroStrike brand
+  — built on its patented CyberSlice technology — alongside ZeroStrike Cloud Command,
+  ZeroStrike Blueprint professional services, Compliancy Cloud and a cyber-insurance
+  offering. Cyemptive is sold as a delivered end-user security product through a direct
+  and partner motion; it publishes no public developer program, API reference or
+  machine-readable contract of any kind.'
 url: https://raw.githubusercontent.com/api-evangelist/cyemptive/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,6 +19,15 @@ created: '2026-08-11'
 modified: '2026-08-11'
 tags:
 - Company
+- Cybersecurity
+- Security
+- Ransomware
+- Endpoint Security
+- Cloud Security
+- Threat Prevention
+- Zero Trust
+- Compliance
+- Government
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +35,44 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/cyemptive-domain-security.yml
 - type: Website
+  url: https://www.cyemptive.com/
+- type: SecondaryMarket
   url: https://forgeglobal.com/cyemptive_stock/
+- type: LLMsTxt
+  url: llms/cyemptive-llms.txt
+- type: Plans
+  url: plans/cyemptive-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/cyemptive-rate-limits.yml
+x-enrichment:
+  date: '2026-08-11'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Cyemptive ships ZeroStrike as a delivered end-user security product sold direct and
+    through partners — api.cyemptive.com and developer.cyemptive.com do not exist in DNS,
+    no Cyemptive GitHub organization exists, no first-party package is published on any
+    registry, and the only two reachable technical hosts are logins (an ASP.NET partner
+    portal at partner.cyemptive.com and a Hudu IT-documentation tenant at
+    docs.cyemptive.com), neither of which is an API reference.
+  evidence:
+  - url: https://partner.cyemptive.com/openapi.json
+    status: 404
+  - url: https://partner.cyemptive.com/.well-known/agent-card.json
+    status: 404
+  - url: https://docs.cyemptive.com/openapi.json
+    status: 404
+  - url: https://api.github.com/orgs/cyemptive
+    status: 404
+  - url: https://pypi.org/pypi/cyemptive/json
+    status: 404
+  - url: https://www.cyemptive.com/
+    status: 0
+  checked: '2026-08-11'

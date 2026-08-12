@@ -1,0 +1,12 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cyemptive.com/
+limit_count: 0
+note: >-
+  No rate limits are documented because no public API exists to limit. Cyemptive
+  publishes no developer portal, no API reference and no machine-readable contract;
+  api.cyemptive.com and developer.cyemptive.com do not resolve in DNS. There is
+  therefore no documented window, quota, burst allowance, exhaustion status code, or
+  RateLimit-*/Retry-After response header to record. An honest zero.
+limits: []
+headers: []
